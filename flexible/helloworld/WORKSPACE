@@ -1,0 +1,37 @@
+workspace(name = "helloworld")
+
+maven_jar(
+    name = "servlet_api",
+    artifact = "javax.servlet:javax.servlet-api:3.1.0",
+)
+
+git_repository(
+    name = "io_bazel_rules_appengine",
+    remote = "https://github.com/bazelbuild/rules_appengine.git",
+    # Check https://github.com/bazelbuild/rules_appengine/releases for the latest version.
+    tag = "0.0.5",
+)
+
+#Java
+load("@io_bazel_rules_appengine//appengine:appengine.bzl", "appengine_repositories")
+appengine_repositories()
+
+
+git_repository(
+    name = "io_bazel_rules_docker",
+    remote = "https://github.com/bazelbuild/rules_docker.git",
+    commit = "921c8fbd6eacd0b2129e0aa26200656720546bd1",
+)
+
+load(
+  "@io_bazel_rules_docker//docker:docker.bzl",
+  "docker_repositories", "docker_pull"
+)
+docker_repositories()
+
+docker_pull(
+  name = "jetty",
+  registry = "gcr.io",
+  repository = "convoy-adapter/bazel",
+  tag = "jetty-demo",
+)

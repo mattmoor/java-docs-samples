@@ -51,3 +51,6 @@ out/
 
 # OSX
 .DS_Store
+
+# Bazel artifacts
+bazel-*
