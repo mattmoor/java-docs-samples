@@ -20,7 +20,7 @@ appengine_repositories()
 git_repository(
     name = "io_bazel_rules_docker",
     remote = "https://github.com/bazelbuild/rules_docker.git",
-    commit = "921c8fbd6eacd0b2129e0aa26200656720546bd1",
+    commit = "71bbc36a45346668be52cae4df5a8e7a96920f24",
 )
 
 load(
@@ -32,6 +32,6 @@ docker_repositories()
 docker_pull(
   name = "jetty",
   registry = "gcr.io",
-  repository = "convoy-adapter/bazel",
-  tag = "jetty-demo",
+  repository = "distroless/java/jetty",
+  digest = "sha256:87ae1deef030f322af909b0fe44edd19b60610a7623dbd5665156757e5930fb3",
 )
